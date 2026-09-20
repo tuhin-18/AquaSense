@@ -1,0 +1,3 @@
+horizon,f1_with_indicators,f1_without_indicators,f1_difference,roc_auc_with_indicators,roc_auc_without_indicators,roc_auc_difference,pr_auc_with_indicators,pr_auc_without_indicators,pr_auc_difference
+12h,0.2826,0.1956,0.087,0.8351,0.825,0.01,0.2823,0.2621,0.0202
+24h,0.2174,0.3532,-0.1358,0.7581,0.7683,-0.0101,0.2427,0.3144,-0.0716

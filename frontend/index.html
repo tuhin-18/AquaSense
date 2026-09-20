@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AquaSense - ML Water Quality Risk Assessment</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+<div class="dashboard-wrapper">
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="app-header">
+
+        <div class="brand">
+            <div class="logo-glow"></div>
+
+            <div>
+                <h1>AquaSense</h1>
+                <small>Predictive Water Quality System</small>
+            </div>
+        </div>
+
+        <div class="system-status">
+            <span class="status-indicator live"></span>
+            <span id="system-status-text">
+                ML Simulation Connected
+            </span>
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN DASHBOARD ================= -->
+
+    <main class="dashboard-grid">
+
+        <!-- ================= LEFT SIDE ================= -->
+
+        <section class="sensors-section">
+
+            <h2 class="section-title">
+                Water Quality Telemetry
+            </h2>
+
+
+            <div class="sensors-grid">
+
+                <!-- pH -->
+
+                <div class="metric-card" id="card-ph">
+
+                    <div class="card-header">
+                        <span class="sensor-name">
+                            pH Level
+                        </span>
+
+                        <span class="sensor-icon">
+                            💧
+                        </span>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="value-container">
+
+                            <span
+                                class="metric-value"
+                                id="val-ph">
+                                --
+                            </span>
+
+                            <span class="metric-unit">
+                                pH
+                            </span>
+
+                        </div>
+
+                        <div class="progress-bar">
+
+                            <div
+                                class="progress-fill"
+                                id="prog-ph"
+                                style="width:0%;">
+                            </div>
+
+                        </div>
+
+                        <span
+                            class="metric-status"
+                            id="stat-ph">
+                            Loading...
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Turbidity -->
+
+                <div class="metric-card" id="card-tur">
+
+                    <div class="card-header">
+
+                        <span class="sensor-name">
+                            Turbidity
+                        </span>
+
+                        <span class="sensor-icon">
+                            🌊
+                        </span>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="value-container">
+
+                            <span
+                                class="metric-value"
+                                id="val-tur">
+                                --
+                            </span>
+
+                            <span class="metric-unit">
+                                FNU
+                            </span>
+
+                        </div>
+
+                        <div class="progress-bar">
+
+                            <div
+                                class="progress-fill"
+                                id="prog-tur"
+                                style="width:0%;">
+                            </div>
+
+                        </div>
+
+                        <span
+                            class="metric-status"
+                            id="stat-tur">
+                            Loading...
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Dissolved Oxygen -->
+
+                <div class="metric-card" id="card-do">
+
+                    <div class="card-header">
+
+                        <span class="sensor-name">
+                            Dissolved Oxygen
+                        </span>
+
+                        <span class="sensor-icon">
+                            🫧
+                        </span>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="value-container">
+
+                            <span
+                                class="metric-value"
+                                id="val-do">
+                                --
+                            </span>
+
+                            <span class="metric-unit">
+                                mg/L
+                            </span>
+
+                        </div>
+
+                        <div class="progress-bar">
+
+                            <div
+                                class="progress-fill"
+                                id="prog-do"
+                                style="width:0%;">
+                            </div>
+
+                        </div>
+
+                        <span
+                            class="metric-status"
+                            id="stat-do">
+                            Loading...
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Water Temperature -->
+
+                <div class="metric-card" id="card-temp">
+
+                    <div class="card-header">
+
+                        <span class="sensor-name">
+                            Water Temperature
+                        </span>
+
+                        <span class="sensor-icon">
+                            🌡️
+                        </span>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="value-container">
+
+                            <span
+                                class="metric-value"
+                                id="val-temp">
+                                --
+                            </span>
+
+                            <span class="metric-unit">
+                                °C
+                            </span>
+
+                        </div>
+
+                        <div class="progress-bar">
+
+                            <div
+                                class="progress-fill"
+                                id="prog-temp"
+                                style="width:0%;">
+                            </div>
+
+                        </div>
+
+                        <span
+                            class="metric-status"
+                            id="stat-temp">
+                            Loading...
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Specific Conductance -->
+
+                <div class="metric-card" id="card-conductance">
+
+                    <div class="card-header">
+
+                        <span class="sensor-name">
+                            Conductance
+                        </span>
+
+                        <span class="sensor-icon">
+                            ⚡
+                        </span>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="value-container">
+
+                            <span
+                                class="metric-value"
+                                id="val-conductance">
+                                --
+                            </span>
+
+                            <span class="metric-unit">
+                                µS/cm
+                            </span>
+
+                        </div>
+
+                        <div class="progress-bar">
+
+                            <div
+                                class="progress-fill"
+                                id="prog-conductance"
+                                style="width:0%;">
+                            </div>
+
+                        </div>
+
+                        <span
+                            class="metric-status"
+                            id="stat-conductance">
+                            Loading...
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= SIMULATION CONTROLS ================= -->
+
+            <div
+                class="metric-card simulation-controls"
+                id="simulation-controls">
+
+                <h2 class="section-title">
+                    Historical Simulation
+                </h2>
+
+                <div class="simulation-buttons">
+
+                    <button id="previous-hour">
+                        ← Previous
+                    </button>
+
+                    <button id="next-hour">
+                        Next Hour →
+                    </button>
+
+                    <button id="reset-simulation">
+                        Reset
+                    </button>
+
+                </div>
+
+                <div class="simulation-time">
+
+                    Simulation Time:
+
+                    <strong id="simulation-time">
+                        Loading...
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= RIGHT SIDE ================= -->
+
+        <aside class="side-panel">
+
+
+            <!-- ================= AI ASSESSMENT ================= -->
+
+            <section
+                class="ai-section metric-card glowing"
+                id="ai-card">
+
+                <h2 class="section-title">
+                    AI Assessment
+                </h2>
+
+                <div class="ai-status-container">
+
+                    <div class="ai-icon-wrapper">
+
+                        <svg
+                            class="ai-scanner"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+
+                            <path
+                                d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke-opacity="0.2"/>
+
+                        </svg>
+
+                    </div>
+
+                    <h3
+                        class="prediction-text"
+                        id="ai-prediction">
+                        Loading AI assessment...
+                    </h3>
+
+                    <p
+                        class="prediction-detail"
+                        id="ai-detail">
+                        XGBoost prediction engine
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= AI RISK DETAILS ================= -->
+
+            <section
+                class="metric-card"
+                id="risk-panel">
+
+                <h2 class="section-title">
+                    Risk Forecast
+                </h2>
+
+                <div class="risk-grid">
+
+                    <div class="risk-item">
+
+                        <span>
+                            6 Hour Risk
+                        </span>
+
+                        <strong id="risk-6h">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <div class="risk-item">
+
+                        <span>
+                            12 Hour Risk
+                        </span>
+
+                        <strong id="risk-12h">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <div class="risk-item">
+
+                        <span>
+                            24 Hour Risk
+                        </span>
+
+                        <strong id="risk-24h">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <div class="risk-item">
+
+                        <span>
+                            Risk Horizon
+                        </span>
+
+                        <strong id="risk-horizon">
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= TREND ANALYSIS ================= -->
+
+            <section
+                class="metric-card"
+                id="trend-panel">
+
+                <h2 class="section-title">
+                    Water Quality Status
+                </h2>
+
+                <div class="trend-list">
+
+                    <div class="trend-row">
+
+                        <span>
+                            Turbidity
+                        </span>
+
+                        <strong id="trend-turbidity">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <div class="trend-row">
+
+                        <span>
+                            Dissolved Oxygen
+                        </span>
+
+                        <strong id="trend-do">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <div class="trend-row">
+
+                        <span>
+                            Conductance
+                        </span>
+
+                        <strong id="trend-conductance">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <div class="trend-row">
+
+                        <span>
+                            pH
+                        </span>
+
+                        <strong id="trend-ph">
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= PUMP CONTROL ================= -->
+
+            <section
+                class="control-section metric-card">
+
+                <h2 class="section-title">
+                    Preventive Pump Control
+                </h2>
+
+                <div class="control-panel">
+
+                    <div class="control-row">
+
+                        <span class="control-label">
+                            Control Mode
+                        </span>
+
+                        <div
+                            class="toggle-switch mode-toggle"
+                            id="mode-toggle">
+
+                            <div class="toggle-slider"></div>
+
+                            <span class="mode-text">
+                                Auto
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="pump-status-card"
+                        id="pump-card">
+
+                        <div class="pump-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2">
+
+                                <path
+                                    d="M12 19V5M5 12l7-7 7 7"/>
+
+                            </svg>
+
+                        </div>
+
+
+                        <div class="pump-info">
+
+                            <h4>
+                                Water Pump
+                            </h4>
+
+                            <span
+                                class="pump-state"
+                                id="pump-state">
+                                STANDBY
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            class="manual-pump-btn"
+                            id="manual-pump-btn"
+                            disabled>
+
+                            Override
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </aside>
+
+    </main>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>

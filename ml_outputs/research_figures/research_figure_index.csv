@@ -1,0 +1,13 @@
+figure,filename
+Figure 1,figure_1_annual_turbidity_distribution.png
+Figure 2,figure_2_example_high_turbidity_event.png
+Figure 3,figure_3_test_roc_auc_comparison.png
+Figure 4,figure_4_test_pr_auc_comparison.png
+Figure 5,figure_5_test_f1_comparison.png
+Figure 6,figure_6_walk_forward_roc_auc.png
+Figure 7,figure_7_event_warning_detection.png
+Figure 8,figure_8_warning_lead_time.png
+Figure 9,figure_9_pump_action_comparison.png
+Figure 10 - 12h,figure_10_xgboost_12h_feature_importance.png
+Figure 10 - 24h,figure_10_xgboost_24h_feature_importance.png
+Figure 11,figure_11_missingness_sensitivity.png

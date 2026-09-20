@@ -1,0 +1,7 @@
+parameter,missing_values,missing_percentage
+water_temperature,1,0.0016246425786327007
+sp_conductance,897,1.4573043930335328
+ph,14,0.02274499610085781
+do_concentration,3287,5.340200155965688
+do_saturation,3289,5.343449441122953
+turbidity,1057,1.7172472056147647

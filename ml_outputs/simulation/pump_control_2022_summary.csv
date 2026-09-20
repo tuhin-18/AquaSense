@@ -1,0 +1,2 @@
+reactive_action_start,predictive_action_start,preventive_lead_hours,reactive_action_hours,predictive_action_hours,actual_event,predictive_warning
+2022-09-26 20:00:00+00:00,2022-09-26 14:00:00+00:00,6.0,27,42,True,True

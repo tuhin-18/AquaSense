@@ -1,0 +1,8 @@
+table_number,filename,description
+1,table_1_dataset_summary.csv,Dataset and turbidity summary
+2,table_2_model_performance.csv,Chronological test-set model performance
+3,table_3_walk_forward_validation.csv,Walk-forward validation results
+4,table_4_event_warning_performance.csv,Strict out-of-sample event warning performance
+5,table_5_pump_policy_comparison.csv,Reactive versus predictive pump-control simulation
+6,table_6_feature_importance.csv,XGBoost feature importance for 12h and 24h horizons
+7,table_7_missingness_sensitivity.csv,Sensitivity analysis for missingness indicators

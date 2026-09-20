@@ -1,0 +1,4 @@
+strategy,horizon,threshold,warning_window_hours,test_events,detected_events,missed_events,detection_rate,mean_lead_time_hours,median_lead_time_hours,total_reactive_actions,total_predictive_actions
+reactive,N/A,319.81,0,12,12,0,1.0,0.0,0.0,181.0,
+predictive,12h,0.15,48,12,12,0,1.0,39.416666666666664,45.0,,457.0
+predictive,24h,0.15,48,12,12,0,1.0,40.083333333333336,47.5,,791.0

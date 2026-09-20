@@ -1,0 +1,38 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# VS Code
+.vscode/
+
+# Node
+node_modules/
+
+# Python cache
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.log
+
+# Large generated ML intermediate data
+ml_outputs/processed_data/
+
+# Large generated feature datasets
+ml_outputs/ml_features.csv
+ml_outputs/prepared_data/train.csv
+ml_outputs/prepared_data/validation.csv
+ml_outputs/prepared_data/test.csv
+
+# Large simulation prediction output
+ml_outputs/simulation/simulation_predictions.csv

@@ -1,0 +1,4 @@
+policy,horizon,threshold,test_events,detected_events,missed_events,event_detection_rate,mean_first_warning_lead_hours,median_first_warning_lead_hours,total_action_hours,total_intervention_episodes,additional_action_hours_vs_reactive,action_hour_ratio_vs_reactive
+Reactive,0h,319.81,12,12,0,1.0,0.0,0.0,181,45.0,0,1.0
+Predictive,12h,0.15,12,12,0,1.0,34.5,38.0,457,100.0,276,2.5248618784530388
+Predictive,24h,0.15,12,12,0,1.0,36.91666666666666,41.5,791,142.0,610,4.370165745856354

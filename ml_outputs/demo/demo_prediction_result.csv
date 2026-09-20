@@ -1,0 +1,2 @@
+timestamp,water_temperature,sp_conductance,ph,do_concentration,do_saturation,turbidity,risk_1h,risk_6h,risk_12h,risk_24h,risk_horizon,risk_level
+2022-09-26 14:00:00+00:00,5.53,0.034,7.32,12.9,102.4,61.0,0.00011020868259947747,0.08521883189678192,0.4058986306190491,0.5715695023536682,12h,MEDIUM

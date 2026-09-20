@@ -1,0 +1,4 @@
+strategy,horizon,threshold,evaluation_window_hours,total_intervention_episodes,useful_intervention_episodes,unnecessary_intervention_episodes,intervention_precision,events_in_test_period,events_detected,event_detection_rate,mean_lead_time_hours,median_lead_time_hours,mean_episode_duration_hours,median_episode_duration_hours
+reactive,N/A,319.81,0,45,,,,12,12,1.0,0.0,0.0,4.022222222222222,2.0
+predictive,12h,0.15,48,100,28.0,72.0,0.28,12,11,0.9166666666666666,18.035714285714285,17.0,4.57,1.0
+predictive,24h,0.15,48,142,28.0,114.0,0.19718309859154928,12,12,1.0,18.0,17.5,5.570422535211268,2.0

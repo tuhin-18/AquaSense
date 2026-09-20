@@ -1,0 +1,5 @@
+horizon,threshold,total_events,detected_events,missed_events,detection_rate,mean_lead_time_hours,median_lead_time_hours,minimum_lead_time_hours,maximum_lead_time_hours,total_test_warnings
+1h,0.25,43,11,32,0.2558139534883721,106.45454545454545,104.0,19.0,168.0,110
+6h,0.2,43,12,31,0.27906976744186046,124.16666666666667,132.5,4.0,168.0,222
+12h,0.15,43,12,31,0.27906976744186046,137.75,159.0,7.0,168.0,457
+24h,0.15,43,12,31,0.27906976744186046,153.75,162.0,82.0,168.0,791

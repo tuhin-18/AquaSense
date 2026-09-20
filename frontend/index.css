@@ -1,0 +1,1251 @@
+/* =========================================================
+   AQUASENSE - PREDICTIVE WATER QUALITY DASHBOARD
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #070b0e;
+    --panel: #10151b;
+    --panel-light: #141a21;
+    --border: #252d35;
+
+    --text: #edf2f5;
+    --muted: #7f8b96;
+
+    --cyan: #00e5e5;
+    --cyan-dark: #00aeb0;
+
+    --green: #00d49a;
+    --yellow: #ffb300;
+    --orange: #ff8a00;
+    --red: #ff3b3b;
+
+    --shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+}
+
+body {
+    font-family: "Outfit", sans-serif;
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(0, 229, 229, 0.06),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 10% 80%,
+            rgba(0, 180, 190, 0.035),
+            transparent 35%
+        ),
+        var(--bg);
+
+    color: var(--text);
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   MAIN WRAPPER
+   ========================================================= */
+
+.dashboard-wrapper {
+    width: min(1180px, 94%);
+    margin: 0 auto;
+    padding: 26px 0 40px;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.app-header {
+    height: 66px;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+
+    border-bottom: 1px solid #20272d;
+    margin-bottom: 22px;
+}
+
+
+/* BRAND */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-glow {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+    background: var(--cyan);
+
+    box-shadow:
+        0 0 8px var(--cyan),
+        0 0 20px rgba(0, 229, 229, 0.6);
+}
+
+.brand h1 {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.brand p {
+    color: #8d98a2;
+    font-size: 9px;
+    margin-top: 1px;
+}
+
+
+/* =========================================================
+   TOP SIMULATION BUTTONS
+   ========================================================= */
+
+.simulation-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+
+.control-btn {
+    border: 1px solid #36414a;
+
+    background: #12181e;
+    color: #d9e1e5;
+
+    border-radius: 5px;
+
+    padding: 7px 13px;
+
+    font-family: "Outfit", sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.control-btn:hover {
+    transform: translateY(-1px);
+}
+
+
+/* Previous */
+
+.previous-btn {
+    border-color: #59636d;
+}
+
+.previous-btn:hover {
+    background: #252d34;
+    color: white;
+}
+
+
+/* Next */
+
+.next-btn {
+    border-color: #008d8f;
+    color: #00eeee;
+
+    background: rgba(0, 229, 229, 0.07);
+}
+
+.next-btn:hover {
+    background: rgba(0, 229, 229, 0.15);
+    box-shadow: 0 0 12px rgba(0, 229, 229, 0.15);
+}
+
+
+/* Reset */
+
+.reset-btn {
+    border-color: #555f68;
+    color: #d2d8dc;
+}
+
+.reset-btn:hover {
+    background: #2b3239;
+}
+
+
+/* SYSTEM STATUS */
+
+.system-status {
+    justify-self: end;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    border: 1px solid #006e70;
+
+    background: rgba(0, 229, 229, 0.06);
+
+    color: #00e5e5;
+
+    font-size: 9px;
+}
+
+.status-indicator {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+    background: var(--cyan);
+
+    box-shadow: 0 0 8px var(--cyan);
+}
+
+
+/* =========================================================
+   MAIN GRID
+   ========================================================= */
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.75fr)
+        minmax(310px, 0.85fr);
+
+    gap: 18px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   SECTION TITLES
+   ========================================================= */
+
+.section-title {
+    color: #87939d;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 0.4px;
+
+    margin-bottom: 11px;
+}
+
+
+/* =========================================================
+   SENSOR GRID
+   ========================================================= */
+
+.sensors-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 13px;
+}
+
+
+/* =========================================================
+   GENERIC CARD
+   ========================================================= */
+
+.metric-card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18, 24, 30, 0.98),
+            rgba(13, 18, 23, 0.98)
+        );
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+}
+
+
+/* SENSOR CARD */
+
+.sensors-grid .metric-card {
+    min-height: 105px;
+    padding: 15px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 9px;
+}
+
+.sensor-name {
+    font-size: 10px;
+    font-weight: 500;
+    color: #9aa5ae;
+}
+
+.sensor-icon {
+    font-size: 13px;
+}
+
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================================
+   SENSOR VALUES
+   ========================================================= */
+
+.value-container {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.metric-value {
+    font-size: 29px;
+    line-height: 1;
+
+    font-weight: 700;
+
+    color: var(--green);
+
+    transition:
+        color 0.3s ease,
+        text-shadow 0.3s ease;
+}
+
+.metric-unit {
+    font-size: 9px;
+    color: #7f8b95;
+}
+
+
+/* =========================================================
+   VALUE STATES
+   These classes will be added by app.js
+   ========================================================= */
+
+.metric-value.safe {
+    color: var(--green);
+}
+
+.metric-value.normal {
+    color: var(--green);
+}
+
+.metric-value.warning {
+    color: var(--yellow);
+
+    text-shadow:
+        0 0 10px rgba(255, 179, 0, 0.2);
+}
+
+.metric-value.danger {
+    color: var(--red);
+
+    text-shadow:
+        0 0 14px rgba(255, 59, 59, 0.25);
+}
+
+
+/* =========================================================
+   PROGRESS BAR
+   ========================================================= */
+
+.progress-bar {
+    height: 4px;
+
+    width: 100%;
+
+    margin-top: 9px;
+
+    background: #20262c;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+
+    width: 0%;
+
+    background: var(--cyan);
+
+    border-radius: 10px;
+
+    transition:
+        width 0.35s ease,
+        background 0.3s ease;
+}
+
+.progress-fill.safe {
+    background: var(--green);
+}
+
+.progress-fill.warning {
+    background: var(--yellow);
+}
+
+.progress-fill.danger {
+    background: var(--red);
+}
+
+
+/* =========================================================
+   SENSOR STATUS
+   ========================================================= */
+
+.metric-status {
+    margin-top: 6px;
+
+    font-size: 8px;
+    font-weight: 500;
+
+    color: var(--green);
+
+    transition: color 0.3s ease;
+}
+
+.metric-status.warning {
+    color: var(--yellow);
+}
+
+.metric-status.danger {
+    color: var(--red);
+}
+
+
+/* =========================================================
+   HIGH RISK SENSOR CARD
+   ========================================================= */
+
+.metric-card.high-risk {
+    border-color: rgba(255, 59, 59, 0.45);
+
+    box-shadow:
+        0 0 22px rgba(255, 59, 59, 0.08),
+        var(--shadow);
+}
+
+
+/* =========================================================
+   SIDE PANEL
+   ========================================================= */
+
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+
+/* =========================================================
+   AI ASSESSMENT
+   ========================================================= */
+
+.ai-section {
+    min-height: 184px;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.ai-status-container {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+
+.ai-icon-wrapper {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border: 1px solid #006e70;
+
+    background: rgba(0, 229, 229, 0.06);
+
+    color: var(--cyan);
+
+    font-size: 20px;
+
+    margin-bottom: 12px;
+}
+
+.prediction-text {
+    font-size: 17px;
+
+    color: var(--cyan);
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    transition: color 0.3s ease;
+}
+
+.prediction-detail {
+    color: #76818a;
+
+    font-size: 9px;
+
+    line-height: 1.4;
+
+    margin-top: 6px;
+
+    max-width: 260px;
+}
+
+
+/* AI STATES */
+
+.ai-section.warning {
+    border-color: rgba(255, 179, 0, 0.45);
+
+    box-shadow:
+        0 0 22px rgba(255, 179, 0, 0.07);
+}
+
+.ai-section.warning .prediction-text {
+    color: var(--yellow);
+}
+
+.ai-section.danger {
+    border-color: rgba(255, 59, 59, 0.55);
+
+    box-shadow:
+        0 0 25px rgba(255, 59, 59, 0.10);
+}
+
+.ai-section.danger .prediction-text {
+    color: var(--red);
+}
+
+.ai-section.danger .ai-icon-wrapper {
+    color: var(--red);
+    border-color: rgba(255, 59, 59, 0.5);
+}
+
+
+/* =========================================================
+   AI FORECAST
+   ========================================================= */
+
+.forecast-section {
+    padding: 15px;
+}
+
+.forecast-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+}
+
+
+/* Individual forecast boxes */
+
+.forecast-card {
+    min-height: 70px;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    border: 1px solid #252d35;
+
+    background: rgba(7, 11, 14, 0.55);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.forecast-title {
+    color: #89949d;
+
+    font-size: 8px;
+
+    margin-bottom: 4px;
+}
+
+.forecast-card strong {
+    font-size: 15px;
+
+    color: var(--green);
+
+    line-height: 1.1;
+}
+
+.forecast-card span:last-child {
+    color: #69747e;
+
+    font-size: 7px;
+
+    margin-top: 3px;
+}
+
+
+/* Forecast states */
+
+.forecast-card.warning {
+    border-color: rgba(255, 179, 0, 0.4);
+
+    background:
+        rgba(255, 179, 0, 0.035);
+}
+
+.forecast-card.warning strong {
+    color: var(--yellow);
+}
+
+.forecast-card.danger {
+    border-color: rgba(255, 59, 59, 0.45);
+
+    background:
+        rgba(255, 59, 59, 0.04);
+}
+
+.forecast-card.danger strong {
+    color: var(--red);
+}
+
+
+/* Event card */
+
+#event-card strong {
+    color: var(--green);
+    text-transform: uppercase;
+}
+
+#event-card.warning strong {
+    color: var(--yellow);
+}
+
+#event-card.danger strong {
+    color: var(--red);
+}
+
+
+/* =========================================================
+   WATER QUALITY TREND
+   ========================================================= */
+
+.trend-section {
+    padding: 15px;
+}
+
+.trend-list {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.trend-list div {
+    display: flex;
+    justify-content: space-between;
+
+    color: #a1abb3;
+
+    font-size: 9px;
+}
+
+.trend-list strong {
+    color: var(--green);
+}
+
+.trend-list strong.warning {
+    color: var(--yellow);
+}
+
+.trend-list strong.danger {
+    color: var(--red);
+}
+
+
+/* =========================================================
+   PUMP CONTROL
+   ========================================================= */
+
+.control-section {
+    padding: 15px;
+}
+
+.control-row {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding-bottom: 12px;
+
+    border-bottom: 1px solid #20272e;
+}
+
+.control-label {
+    color: #87929b;
+    font-size: 9px;
+}
+
+
+/* Toggle */
+
+.toggle-switch {
+    position: relative;
+
+    width: 40px;
+    height: 20px;
+
+    border-radius: 20px;
+
+    background: #303941;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+.toggle-switch.active {
+    background: #00b987;
+}
+
+.toggle-slider {
+    position: absolute;
+
+    width: 14px;
+    height: 14px;
+
+    top: 3px;
+    left: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    transition: transform 0.2s ease;
+}
+
+.toggle-switch.active .toggle-slider {
+    transform: translateX(20px);
+}
+
+.mode-text {
+    position: absolute;
+
+    left: 47px;
+    top: 2px;
+
+    color: #b5bec5;
+
+    font-size: 9px;
+
+    white-space: nowrap;
+}
+
+
+/* Pump card */
+
+.pump-status-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 13px;
+
+    padding: 10px;
+
+    border: 1px solid #202830;
+
+    border-radius: 8px;
+
+    background: rgba(7, 11, 14, 0.5);
+}
+
+.pump-icon {
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
+
+    background: rgba(0, 229, 229, 0.1);
+
+    color: var(--cyan);
+
+    font-size: 13px;
+}
+
+.pump-info {
+    flex: 1;
+}
+
+.pump-info h4 {
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.pump-state {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 7px;
+
+    color: #77838c;
+}
+
+.pump-state.active {
+    color: var(--cyan);
+}
+
+.pump-state.danger {
+    color: var(--red);
+}
+
+.manual-pump-btn {
+    border: 1px solid #2c343c;
+
+    background: #11171d;
+
+    color: #67727c;
+
+    border-radius: 5px;
+
+    padding: 5px 8px;
+
+    font-family: inherit;
+
+    font-size: 7px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   HISTORICAL SIMULATION
+   ========================================================= */
+
+.historical-simulation {
+    margin-top: 13px;
+
+    padding: 14px 15px;
+
+    min-height: 67px;
+}
+
+.simulation-time {
+    color: #9da7af;
+
+    font-size: 9px;
+}
+
+.simulation-time strong {
+    color: #e7edf0;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .app-header {
+        grid-template-columns: 1fr;
+        height: auto;
+
+        gap: 13px;
+
+        padding-bottom: 15px;
+    }
+
+    .simulation-controls {
+        order: 2;
+    }
+
+    .system-status {
+        justify-self: start;
+        order: 3;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .side-panel {
+        margin-top: 5px;
+    }
+}
+
+
+@media (max-width: 560px) {
+
+    .dashboard-wrapper {
+        width: 94%;
+        padding-top: 15px;
+    }
+
+    .sensors-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .forecast-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .control-btn {
+        padding: 6px 9px;
+        font-size: 9px;
+    }
+}
+/* =========================================================
+   HISTORICAL SIMULATION CONTROLS
+   ========================================================= */
+
+.app-header {
+    position: relative;
+}
+
+/* Keep Previous / Next / Reset fixed in the center */
+.simulation-controls {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    z-index: 20;
+}
+
+/* AquaSense button styling */
+.simulation-controls button {
+    border: 1px solid rgba(0, 229, 255, 0.45);
+    background: rgba(10, 20, 25, 0.95);
+    color: #dceff3;
+
+    padding: 9px 16px;
+    border-radius: 8px;
+
+    font-family: "Outfit", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.15s ease;
+}
+
+/* Previous */
+.simulation-controls button:first-child {
+    border-color: rgba(0, 229, 255, 0.45);
+    color: #bceef5;
+}
+
+.simulation-controls button:first-child:hover {
+    background: rgba(0, 229, 255, 0.12);
+    border-color: #00e5ff;
+    color: #00e5ff;
+    box-shadow: 0 0 14px rgba(0, 229, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+/* Next Hour - highlighted */
+.simulation-controls button:nth-child(2) {
+    background: rgba(0, 229, 255, 0.10);
+    border-color: #00e5ff;
+    color: #00e5ff;
+}
+
+.simulation-controls button:nth-child(2):hover {
+    background: rgba(0, 229, 255, 0.20);
+    box-shadow: 0 0 18px rgba(0, 229, 255, 0.35);
+    transform: translateY(-1px);
+}
+
+/* Reset */
+.simulation-controls button:last-child {
+    border-color: rgba(255, 193, 7, 0.45);
+    color: #ffd54f;
+}
+
+.simulation-controls button:last-child:hover {
+    background: rgba(255, 193, 7, 0.10);
+    border-color: #ffd54f;
+    color: #ffe082;
+    box-shadow: 0 0 14px rgba(255, 193, 7, 0.22);
+    transform: translateY(-1px);
+}
+
+/* Press effect */
+.simulation-controls button:active {
+    transform: scale(0.97);
+}
+
+/* Keep controls in a stable position even when content changes */
+.app-header .simulation-controls {
+    min-width: 250px;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+    .simulation-controls {
+        position: static;
+        transform: none;
+        margin: 12px auto 0;
+    }
+
+    .app-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+}
+/* =========================================================
+   TOP HEADER SIMULATION BUTTONS
+   ========================================================= */
+
+.app-header {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 1fr auto 1fr;
+
+    align-items: center;
+}
+
+/* Put simulation buttons in the CENTER column */
+
+.app-header .simulation-buttons {
+
+    position: static;
+
+    grid-column: 2;
+
+    grid-row: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    white-space: nowrap;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   SIMULATION BUTTON STYLE
+   ========================================================= */
+
+.app-header .simulation-buttons button {
+
+    border: 1px solid rgba(0, 229, 255, 0.45);
+
+    background: rgba(10, 20, 25, 0.95);
+
+    color: #dceff3;
+
+    padding: 9px 16px;
+
+    border-radius: 8px;
+
+    font-family: "Outfit", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.15s ease;
+}
+
+
+/* Previous */
+
+.app-header .simulation-buttons button:first-child {
+
+    border-color: rgba(0, 229, 255, 0.45);
+
+    color: #bceef5;
+}
+
+.app-header .simulation-buttons button:first-child:hover {
+
+    background: rgba(0, 229, 255, 0.12);
+
+    border-color: #00e5ff;
+
+    color: #00e5ff;
+
+    box-shadow:
+        0 0 14px rgba(0, 229, 255, 0.25);
+
+    transform: translateY(-1px);
+}
+
+
+/* Next Hour */
+
+.app-header .simulation-buttons button:nth-child(2) {
+
+    background: rgba(0, 229, 255, 0.10);
+
+    border-color: #00e5ff;
+
+    color: #00e5ff;
+}
+
+.app-header .simulation-buttons button:nth-child(2):hover {
+
+    background: rgba(0, 229, 255, 0.20);
+
+    box-shadow:
+        0 0 18px rgba(0, 229, 255, 0.35);
+
+    transform: translateY(-1px);
+}
+
+
+/* Reset */
+
+.app-header .simulation-buttons button:last-child {
+
+    border-color: rgba(255, 193, 7, 0.45);
+
+    color: #ffd54f;
+}
+
+.app-header .simulation-buttons button:last-child:hover {
+
+    background: rgba(255, 193, 7, 0.10);
+
+    border-color: #ffd54f;
+
+    color: #ffe082;
+
+    box-shadow:
+        0 0 14px rgba(255, 193, 7, 0.22);
+
+    transform: translateY(-1px);
+}
+
+
+/* Press effect */
+
+.app-header .simulation-buttons button:active {
+
+    transform: scale(0.97);
+}
+
+
+/* =========================================================
+   MOBILE / SMALL SCREEN
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .app-header {
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 12px;
+    }
+
+    .app-header .simulation-buttons {
+
+        order: 2;
+
+        position: static;
+
+        margin: 0 auto;
+    }
+
+}

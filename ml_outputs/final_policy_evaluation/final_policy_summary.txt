@@ -1,0 +1,35 @@
+AquaSense IoT - Final Predictive vs Reactive Evaluation
+============================================================
+
+The evaluation compares a reactive turbidity-threshold policy with predictive XGBoost-based intervention policies.
+
+High-turbidity threshold: 319.81 FNU
+Predictive decision threshold: 0.15
+
+Reactive 0h
+  Test events: 12
+  Detected events: 12
+  Detection rate: 100.00%
+  Mean warning lead: 0.00 hours
+  Median warning lead: 0.00 hours
+  Total action hours: 181
+  Intervention episodes: 45.0
+
+Predictive 12h
+  Test events: 12
+  Detected events: 12
+  Detection rate: 100.00%
+  Mean warning lead: 34.50 hours
+  Median warning lead: 38.00 hours
+  Total action hours: 457
+  Intervention episodes: 100.0
+
+Predictive 24h
+  Test events: 12
+  Detected events: 12
+  Detection rate: 100.00%
+  Mean warning lead: 36.92 hours
+  Median warning lead: 41.50 hours
+  Total action hours: 791
+  Intervention episodes: 142.0
+

@@ -8,7 +8,7 @@ import os
 # AQUASENSE - HISTORICAL SIMULATION API
 # ============================================================
 
-BASE_DIR = r"C:\Users\tusha\Documents\AquaSense"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DATA_FILE = os.path.join(
     BASE_DIR,
